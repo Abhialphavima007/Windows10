@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Windows 10-like Website</title>
+
+  <!-- Link external CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Desktop icons -->
+  <div class="desktop" id="desktop">
+    <div class="icon" data-name="Recycle Bin">
+      <div class="thumb">🗑️</div>
+      <span>Recycle Bin</span>
+    </div>
+
+    <div class="icon" data-name="Google Chrome">
+      <div class="thumb">🌐</div>
+      <span>Google Chrome</span>
+    </div>
+
+    <div class="icon" data-name="VS Code">
+      <div class="thumb">💻</div>
+      <span>Visual Studio Code</span>
+    </div>
+
+    <div class="icon" data-name="Notion">
+      <div class="thumb">📒</div>
+      <span>Notion</span>
+    </div>
+  </div>
+
+  <!-- Taskbar -->
+  <div class="taskbar">
+    <div class="start-btn" id="startBtn" title="Start" aria-label="Start">
+      <!-- simple Windows SVG icon -->
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+           xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 3H11V11H3V3ZM13 3H21V11H13V3ZM3 13H11V21H3V13ZM13 13H21V21H13V13Z"
+              fill="#ffffff" opacity="0.95"></path>
+      </svg>
+    </div>
+
+    <div class="taskbar-icons" id="taskbarIcons">
+      <div class="app" data-app="explorer" title="File Explorer">📁</div>
+      <div class="app" data-app="browser" title="Browser">🌐</div>
+      <div class="app" data-app="mail" title="Mail">✉️</div>
+      <div class="app" data-app="music" title="Music">🎵</div>
+    </div>
+
+    <div class="system-area">
+      <div id="sysTime" aria-live="polite">12:00</div>
+    </div>
+  </div>
+
+  <!-- Start menu (Win10 style) -->
+  <div class="start-menu" id="startMenu" aria-hidden="true">
+    <div class="start-left">
+      <div class="start-search">
+        <input type="text" placeholder="Type here to search" aria-label="Start search" />
+      </div>
+
+      <div class="start-group">
+        <div class="start-item">Pinned</div>
+        <div class="start-item">Most used</div>
+        <div class="start-item">All apps</div>
+      </div>
+    </div>
+
+    <div class="start-right" id="startTiles">
+      <div class="start-tile" data-app="explorer">File Explorer</div>
+      <div class="start-tile" data-app="browser">Edge</div>
+      <div class="start-tile" data-app="mail">Mail</div>
+      <div class="start-tile" data-app="music">Groove</div>
+    </div>
+  </div> 
+
+  <!-- Desktop context menu -->
+  <div class="context-menu" id="desktopContext" role="menu" aria-hidden="true">
+    <div class="item">View &gt;</div>
+    <div class="item">Sort by &gt;</div>
+    <div class="item" id="ctx-next-bg">Next desktop background</div>
+    <div class="item" id="refresh">Refresh</div>
+    <div class="sep"></div>
+    <div class="item">Paste</div>
+    <div class="item">Paste shortcut</div>
+    <div class="sep"></div>
+    <div class="item">New &gt;</div>
+    <div class="sep"></div>
+    <div class="item">Display settings</div>
+    <div class="item">Personalize</div>
+  </div>
+
+  <!-- Link external JS (deferred) -->
+  <script src="script.js" defer></script>
+</body>
+</html>

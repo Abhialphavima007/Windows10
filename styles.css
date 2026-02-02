@@ -1,0 +1,222 @@
+/* Reset & base */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  /* default wallpaper (Windows-like blue) */
+  background-image: linear-gradient(180deg,#0a3b78 0%, #08325f 100%);
+  background-size: cover;
+  background-position: center;
+  transition: background-image .45s ease;
+}
+
+/* Desktop icons (vertical left column) */
+.desktop {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  align-items: flex-start;
+  background-image: url("https://blog.danielburrowes.com/wp-content/uploads/2024/01/windowsxp.png");
+  background-size: cover;
+  background-position: center;
+}
+.icon {
+  width: 70px;
+  text-align: center;
+  cursor: default;
+  color: #fff;
+  user-select: none;
+}
+.icon .thumb {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 6px;
+  backdrop-filter: blur(4px);
+}
+.icon span {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  text-shadow: 0 0 4px #000;
+}
+.icon.selected .thumb {
+  outline: 2px solid rgba(0,120,215,0.9);
+}
+
+/* Taskbar (Windows 10 look) */
+.taskbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 48px;
+  background: rgba(0, 0, 0, 0.596);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  z-index: 1000;
+}
+.start-btn {
+  width: 40px;
+  height: 40px;
+  margin: 0 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 4px;
+}
+.start-btn:hover { background: rgba(255,255,255,0.06); }
+
+.taskbar-icons { display: flex; gap: 4px; margin-left: 4px; }
+.taskbar-icons .app {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 20px;
+}
+.taskbar-icons .app:hover { background: rgba(255,255,255,0.08); }
+
+.system-area {
+  margin-left: auto;
+  display: flex;
+  gap: 16px;
+  color: #fff;
+  font-size: 13px;
+  padding-right: 10px;
+  align-items: center;
+}
+
+/* Start menu */
+.start-menu {
+  position: fixed;
+  left: 8px;
+  bottom: 56px;
+  width: 640px;
+  height: 420px;
+  background: linear-gradient(180deg,#ffffff,#f6f6f6);
+  box-shadow: 0 20px 60px rgba(2,6,23,0.5);
+  border-radius: 6px;
+  display: none;
+  z-index: 1500;
+  overflow: hidden;
+  display: flex;
+}
+.start-left {
+  width: 260px;
+  height: 100%;
+  background: linear-gradient(180deg,#ededed,#e7e7e7);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.start-right {
+  flex: 1;
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-content: flex-start;
+}
+.start-search {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.start-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.start-tile {
+  width: 120px;
+  height: 64px;
+  background: linear-gradient(180deg,#f7f7f8,#efefef);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Context menu (Win10 dark style) */
+.context-menu {
+  position: fixed;
+  min-width: 220px;
+  background: #575757d8;
+  color: #fff;
+  border: 1px solid #3a3a3a77;
+  border-radius: 2px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+  display: none;
+  z-index: 2000;
+  font-size: 13px;
+  padding: 10px;
+}
+.context-menu .item {
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.context-menu .item:hover { background: #e7e5e515; }
+.context-menu .sep { height: 1px; background: #555; margin: 4px 0; }
+
+/* Window style (basic) */
+.window {
+  position: absolute;
+  width: 700px;
+  height: 420px;
+  background: #fff;
+  border: 1px solid #c9c9c9;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  border-radius: 2px;
+}
+.titlebar {
+  height: 32px;
+  background: #f1f1f1;
+  border-bottom: 1px solid #d0d0d0;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  cursor: move;
+}
+.title { flex: 1; color: #000; font-size: 14px; }
+.controls { display: flex; }
+.controls button {
+  width: 40px;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+}
+.controls button:hover { background: #e5e5e5; }
+.content { flex: 1; padding: 14px; color: #000; font-size: 14px; }
+
+/* Responsive */
+@media (max-width: 800px) {
+  .start-menu { width: 90%; left: 5%; }
+}
